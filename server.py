@@ -31,8 +31,11 @@ msg = "Some message..."
 
 # send the message, one letter at a time
 print("Sending characters with delays:")
-for i in msg:
-    c.send(i)
+for i in range(len(covert)):
+    j = i
+    if j > len(msg):
+        j = i - len(msg)
+    c.send(msg[j])
     if(covert_bin[n] == "0"):
         sleep(zero)
         print("Zero: \t" + str(zero))
