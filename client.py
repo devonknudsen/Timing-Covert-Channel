@@ -16,14 +16,15 @@ s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((ip, port))
 
 # recieve data until EOF
-data = s.recv(4096)
+data = s.recv(4096).decode().rstrip("\n")
 
 print("Received characters with delays:")
-while (data.rstrip("\n") != "EOF"):
-    stdout.write(data)
+
+while (data != "EOF"):
+    stdout.write(str(data))
     stdout.flush()
     t0 = time()
-    data = s.recv(4096)
+    data = s.recv(4096).decode().rstrip("\n")
     t1 = time()
     delta = round(t1 - t0, 3)
     if (delta < ONE):
