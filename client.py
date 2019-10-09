@@ -6,7 +6,7 @@ from time import time
 ip = "localhost"
 port = 1337
 ONE = 0.1
-ZERP = 0.025
+ZERO = 0.025
 covert_bin = ""
 
 # create the socker
@@ -27,12 +27,12 @@ while (data != "EOF"):
     data = s.recv(4096).decode().rstrip("\n")
     t1 = time()
     delta = round(t1 - t0, 3)
-    if (delta < ONE):
-        print("\tZero: \t" + str(delta))
-        covert_bin += "0"
-    else:
+    if (delta > ZERO):
         print("\tOne: \t" + str(delta))
         covert_bin += "1"
+    else:
+        print("\tZero: \t" + str(delta))
+        covert_bin += "0"
 print("Binary received: " + str(covert_bin))
 print("\nConvert 8 byte binary to character:")
 # close the connection to the server
