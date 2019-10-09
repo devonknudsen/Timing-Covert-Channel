@@ -32,13 +32,16 @@ msg = "Some message..."
 # send the message, one letter at a time
 print("Sending characters with delays:")
 n = 0
-for i in msg:
-    c.send(i.encode())
-    if (covert_bin[n] == "0"):
-        sleep(ZERO)
-    else:
-        sleep(ONE)
-    n = (n + 1) % len(covert_bin)
+count = 0
+while(count < len(covert_bin)):
+    for i in msg:
+        c.send(i.encode())
+        if (covert_bin[n] == "0"):
+            sleep(ZERO)
+        else:
+            sleep(ONE)
+        n = (n + 1) % len(covert_bin)
+        count += 1
         
 c.send("EOF".encode())
 c.close()
