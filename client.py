@@ -35,10 +35,10 @@ while (data != "EOF"):
         covert_bin += "0"
 
 print("Binary received: " + str(covert_bin))
-question = input("Do you wish to show hidden msg? Y/N\n")
-if (question.upper() == 'N'):
-    print("Goodbye")
-    exit()
+#question = input("Do you wish to show hidden msg? Y/N\n")
+#if (question.upper() == 'N'):
+#    print("Goodbye")
+ #   exit()
 print("\nConvert 8 byte binary to character:")
 # close the connection to the server
 s.close()
