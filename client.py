@@ -6,7 +6,7 @@ import socket
 from sys import stdout
 from time import time
 
-DEBUG = True
+DEBUG = False
 
 # set the server's IP address and port
 IP = "jeangourd.com"
