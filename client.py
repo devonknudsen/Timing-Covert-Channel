@@ -1,3 +1,7 @@
+# Persians: Sydney Anderson, Tram Doan, Devon Knudsen, Zackary Phillips, Promyse Ward, James Wilson
+# GitHub Repo URL: https://github.com/devonknudsen/Timing-Covert-Channel
+# Written in Python 3.7
+
 import socket
 from sys import stdout
 from time import time
@@ -5,8 +9,8 @@ from time import time
 DEBUG = True
 
 # set the server's IP address and port
-IP = "localhost"
-PORT = 1337
+IP = "jeangourd.com"
+PORT = 31337
 
 # set time interval to binary equivalent
 ONE = 0.1
@@ -52,18 +56,23 @@ if(DEBUG):
 covert = ""
 i = 0
 while (i < len(covert_bin)):
+    
+    # b = a byte within the covert binary string 
     b = covert_bin[i:i+8]
 
     # break if there isn't an entire byte left
     if(len(b) != 8):
-        break   
-    n = int("0b{}".format(b),2)
+        break
+    
+    # convert the current byte (b) to its decimal value
+    n = int("0b{}".format(b), 2)
     try:
         if(DEBUG):
             print("byte:\t" + str(b))
             print("int conversion: " + str(n))
             print("char conversion:\t" + chr(n) + "\n")
-            
+        
+        # convert current decimal value (n) to equivalent character
         covert += chr(n)
         
     except:
@@ -71,4 +80,5 @@ while (i < len(covert_bin)):
         
     i += 8
 
+# displays covert message
 print("\nCovert message: " + covert)
